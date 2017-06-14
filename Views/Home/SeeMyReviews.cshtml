@@ -1,0 +1,47 @@
+﻿    @model IEnumerable<DiveCenterRhodes.Models.Review>
+    @{
+        ViewBag.Title = "SeeMyReviews";
+    }
+
+    <h2>Your Reviews</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiveSpot.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Star)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiveSpot.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Star)
+            </td>
+        </tr>
+    }
+</table>
+@if (ViewBag.EmptyReviews == true)
+{
+    <p><a class="btn btn-lg btn-primary" href="/Reviews/Create" role="button">Write your review!</a></p>
+}
+else
+{
+    <p><a class="btn btn-lg btn-primary" href="/Reviews/Create" role="button">Write another review!</a></p>
+}
+
+
+

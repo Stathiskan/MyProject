@@ -1,0 +1,37 @@
+﻿.center {
+    text-align: center
+}
+
+.hr {
+    background-color: dimgrey;
+    color: dimgrey;
+    border: solid 2px dimgrey;
+    height: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    background-color: black;
+    text-emphasis-color: dimgray;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar-nav {
+    width: 85%;
+    text-align: right;
+    float: right !important;
+    display: block;
+}

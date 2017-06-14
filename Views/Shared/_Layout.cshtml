@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title Dive Center Rhodes</title>
+
+    @Styles.Render("~/Content/css")
+
+</head>
+<!-- NAVBAR
+================================================== -->
+<body>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Dive Center Rhodes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("About Us", "About", "Home")</li>
+
+                                    <li class="dropdown">
+                                        @Html.ActionLink("Services", "Index", "Home")
+
+
+                                        <ul class="dropdown-content">
+
+                                            <li>@Html.ActionLink("Schools", "School", "Home")</li>
+                                            <li>@Html.ActionLink("Dive", "Dive", "Home")</li>
+                                        </ul>
+                                     </li>
+                                     <li>@Html.ActionLink("Book", "Create", "Bookings")</li>
+                                    <li>@Html.ActionLink("Reviews", "Index", "Reviews")</li>   
+                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                                    @{
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li style="float:right">
+                                                @Html.ActionLink("Log out", "LogOut", "Home")
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="dropdown" style="float:right">
+                                                @Html.ActionLink("Login/Sign Up", "Index", "Home")
+
+                                                <ul class="dropdown-content">
+                                                    <li>@Html.ActionLink("Login", "LogIn", "Home")</li>
+                                                    <li>@Html.ActionLink("Sign Up", "SignUp", "Home")</li>
+                                                </ul>
+                                            </li>
+                                        }
+                                        if (Session["Admin"] != null)
+                                        {
+
+                                            <li style="float:right">
+                                                @Html.ActionLink("Admin Section", "Index", "Bookings")
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li style="float:right">
+                                                @Html.ActionLink("MyAccount", "UserAccount", "Home")
+                                            </li>
+                                        }
+                                    }
+
+                            </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+</div>
+<!-- Carousel
+================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="~/Content/images/first.jpg" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Discover Scuba</h1>
+                        <p>This place is perfect for scuba diving and scuba divers from around the world visits this place all year around.</p>
+                        <p><a class="btn btn-lg btn-primary" href="/Bookings/Create" role="button">Book Now!</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="second-slide" src="~/Content/images/second3.jpg" alt="Second slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Our Dive Spots</h1>
+                        <p>You will see thousands of fishes there and the beauty cant be expressed in words.</p>
+                        <p><a class="btn btn-lg btn-primary" href="/Home/Dive" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="third-slide" src="~/Content/images/rodos.jpg" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Rhodes Island</h1>
+                        <p>Discover in a glance the best things to see and do in Rhodes island.</p>
+                        <p><a class="btn btn-lg btn-primary" href="http://www.visitgreece.gr/en/greek_islands/rhodes" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div><!-- /.carousel -->
+    <div class="container">
+        @RenderBody()
+    </div>
+        <footer>
+            <div class="container">
+                <div class="pull-right">
+
+                    <p><a href="#">Back to top</a></p>
+                </div>
+                <p>&copy; 2017 DiveCenter Rhodes, Inc. &middot;</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

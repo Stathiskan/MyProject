@@ -1,0 +1,45 @@
+﻿@model DiveCenterRhodes.Models.Instructor
+
+@{
+    ViewBag.Title = "Details";
+}
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Admin Section</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Bookings", "Index", "Bookings")</li>
+            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+            <li class="active">@Html.ActionLink("Instructors", "Index", "Instructors")</li>
+        </ul>
+    </div>
+</nav>
+<h2>Details</h2>
+
+<div>
+    <h4>Instructor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

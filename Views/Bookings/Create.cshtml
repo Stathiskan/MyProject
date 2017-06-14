@@ -1,0 +1,115 @@
+﻿@model DiveCenterRhodes.Models.Booking
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="container">
+    <h2>Define your book!</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceId, "Type Of Dive", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ServiceId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiveSpotId, "Spot of Dive", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("DiveSpotId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DiveSpotId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date, "Choose a date yyyy-mm-dd", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumOfDives, "How many dives?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumOfDives, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumOfDives, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Weight, "Your weight", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Height, "Your height", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShoeNumber, "Your shoe size number", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShoeNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ShoeNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Book!" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    @if (ViewBag.NotAvailable == true)
+    {
+        <p>The service has reached its limit!</p>
+        <p>Please choose a different date!</p>
+    }
+
+    @if (ViewBag.SameBook == true)
+    {
+        <p>You've booked the same service twice!</p>
+        <p>Please choose a different book!</p>
+    }
+
+    @if (ViewBag.InvalidDate == true)
+    {
+        <p>Invalid Date</p>
+        <p>Choose a date between now and 2017/10/30!</p>
+    }
+
+    @if (ViewBag.NumOfDives == true)
+    {
+        <p>Invalid Number of Dives</p>
+        <p>Number of dives must be > 0. </p>
+    }
+    @if (ViewBag.InvalidFormatDate == true)
+    {
+        <p>Invalid Date Format</p>
+    }
+
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

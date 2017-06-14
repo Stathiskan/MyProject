@@ -1,0 +1,163 @@
+﻿@model DiveCenterRhodes.Models.UserAccountModel
+@{
+    ViewBag.Title = "UserAccount";
+}
+
+
+
+
+<div class="container">
+    <h2><span>@Model.user.FirstName</span> <span>@Model.user.LastName </span> Account Details</h2>
+    <table class="table" align="center">
+        <tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.LastName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone Number:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.PhoneNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Country:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Country)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Address:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Address)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Postal Code:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.PostalCode)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Coupon:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Coupon.Type)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Coupon Description:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Coupon.Description)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Date of Birth:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.DateOfBirth)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Level:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.Level)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Medical History:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.user.MedicalHistory)
+            </td>
+        </tr>
+    </table>
+
+
+
+    <h2><span>@Model.user.FirstName</span> <span>@Model.user.LastName </span> Bookings</h2>
+
+    <table class="table" align="center">
+        <tr>
+            <th>
+                Place
+            </th>
+            <th>
+                Type of Service
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Paid
+            </th>
+        </tr>
+
+        @foreach (var item in Model.userBookings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiveSpot.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.TypeOfDive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paid)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <h2>Price: @ViewBag.TotalPrice</h2>
+    <div class="row">
+        <div class="col-md-2"><p><a class="btn btn-lg btn-primary" href="/Bookings/Create" role="button">Book Now!</a></p></div>
+        <div class="col-md-2"><p><a class="btn btn-lg btn-primary" href="/Home/SeeMyReviews" role="button">See your reviews!</a></p></div>
+        <div class="col-md-2"><p><a class="btn btn-lg btn-primary" href="/Users/Edit" role="button">Edit your account</a></p></div>
+    </div>
+    
+</div>
